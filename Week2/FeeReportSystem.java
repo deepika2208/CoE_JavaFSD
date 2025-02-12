@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class FeeReportSystem {
-    private static final String URL = "jdbc:mysql://localhost:3306/feereportsoftware";
+    private static final String URL = "jdbc:mysql://localhost:3306/feereportsystem";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
     private static Connection con;
