@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Online Education Platform</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Online Education Platform</h1>
+    <nav>
+      <ul>
+        <li><a href="#home" class="active" onclick="showSection('home')">Home</a></li>
+        <li><a href="#courses" onclick="showSection('courses')">Courses</a></li>
+        <li><a href="#instructors" onclick="showSection('instructors')">Instructors</a></li>
+        <li><a href="#enrollment" onclick="showSection('enrollment')">Enrollment</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section id="home-section">
+      <div id="carousel">
+        <div class="carousel-item active">
+          <img src="webdevelopment.avif" alt="Featured Course 1">
+          <div class="carousel-caption">
+            <h2>Featured Course 1</h2>
+            <p>Learn the basics of web development.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="jsfeatured.webp" alt="Featured Course 2">
+          <div class="carousel-caption">
+            <h2>Featured Course 2</h2>
+            <p>Master JavaScript and beyond.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div id="course-categories">
+        <div class="tabs">
+          <button class="tab-button active" onclick="filterCourses('all', event)">All</button>
+          <button class="tab-button" onclick="filterCourses('development', event)">Development</button>
+          <button class="tab-button" onclick="filterCourses('design', event)">Design</button>
+          <button class="tab-button" onclick="filterCourses('marketing', event)">Marketing</button>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 1rem;">
+          <input type="text" id="courseSearch" placeholder="Search for a course..." onkeyup="searchCourses()" style="padding: 0.5rem; width: 80%; max-width: 400px;">
+        </div>
+        
+        <div id="courses-list"></div>
+      </div>
+    </section>
+    
+    <section id="courses-section" style="display: none;">
+      <h2 style="text-align: center; margin: 2rem 0;">Our Courses</h2>
+      <div style="text-align: center; margin-bottom: 1rem;">
+        <input type="text" id="courseSearch2" placeholder="Search for a course..." onkeyup="searchCourses('courses-section')" style="padding: 0.5rem; width: 80%; max-width: 400px;">
+      </div>
+      <div id="courses-list-2"></div>
+    </section>
+    
+    <section id="instructors-section" style="display: none;">
+      <h2 style="text-align: center; margin: 2rem 0;">Meet Our Instructors</h2>
+      <div id="instructors-list"></div>
+    </section>
+    
+    <section id="enrollment-section" style="display: none;">
+      <h2 style="text-align: center; margin: 2rem 0;">Enroll in a Course</h2>
+      <div id="enrollment-form">
+        <form id="enrollForm" onsubmit="submitEnrollment(event)">
+          <div class="form-group">
+            <label for="fullname">Full Name:</label>
+            <input type="text" id="fullname" name="fullname" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="course">Select Course:</label>
+            <select id="course" name="course" required>
+              <option value="">--Choose a Course--</option>
+            </select>
+          </div>
+          <button type="submit">Enroll Now</button>
+        </form>
+        <div id="formMessage" style="text-align: center; margin-top: 1rem;"></div>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2025 Online Education Platform. All rights reserved.</p>
+  </footer>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      fetch("courses.json")
+        .then(response => response.json())
+        .then(data => {
+          populateCourses(data.courses);
+          populateCoursesList2(data.courses);
+          populateInstructors(data.instructors);
+          populateCourseDropdown(data.courses);
+        })
+        .catch(error => console.error("Error loading JSON:", error));
+        
+      function populateCourses(courses) {
+        const list = document.getElementById("courses-list");
+        list.innerHTML = courses.map(course => `
+          <a href="course-details5.html?course=${course.id}" style="text-decoration:none; color:inherit;">
+            <div class="course-card" data-category="${course.category}">
+              <img src="${course.image}" alt="${course.title}">
+              <h3>${course.title}</h3>
+              <p>${course.shortDescription}</p>
+            </div>
+          </a>
+        `).join("");
+      }
+      
+      function populateCoursesList2(courses) {
+        const list = document.getElementById("courses-list-2");
+        list.innerHTML = courses.map(course => `
+          <a href="course-details5.html?course=${course.id}" style="text-decoration:none; color:inherit;">
+            <div class="course-card" data-category="${course.category}">
+              <img src="${course.image}" alt="${course.title}">
+              <h3>${course.title}</h3>
+              <p>${course.shortDescription}</p>
+            </div>
+          </a>
+        `).join("");
+      }
+      
+      function populateInstructors(instructors) {
+        const list = document.getElementById("instructors-list");
+        list.innerHTML = instructors.map(instr => `
+          <a href="instructor-details5.html?instructor=${instr.id}" style="text-decoration:none; color:inherit;">
+            <div class="instructor-card">
+              <img src="${instr.image}" alt="${instr.name}">
+              <div class="instructor-info">
+                <h2>${instr.name}</h2>
+                <p>${instr.expertise}</p>
+                <p>Courses: ${instr.courses.join(', ')}</p>
+                <p>Rating: ${instr.rating}</p>
+              </div>
+            </div>
+          </a>
+        `).join("");
+      }
+      
+      function populateCourseDropdown(courses) {
+        const dropdown = document.getElementById("course");
+        dropdown.innerHTML = `<option value="">--Choose a Course--</option>` +
+          courses.map(course => `<option value="${course.title}">${course.title}</option>`).join("");
+      }
+    });
+    
+    document.addEventListener('DOMContentLoaded', initCarousel);
+    function initCarousel() {
+      const items = document.querySelectorAll('#carousel .carousel-item');
+      let current = 0;
+      if (!items.length) return;
+      setInterval(() => {
+        items[current].classList.remove('active');
+        current = (current + 1) % items.length;
+        items[current].classList.add('active');
+      }, 5000);
+    }
+    
+    function showSection(section) {
+      document.getElementById('home-section').style.display = (section === 'home') ? 'block' : 'none';
+      document.getElementById('courses-section').style.display = (section === 'courses') ? 'block' : 'none';
+      document.getElementById('instructors-section').style.display = (section === 'instructors') ? 'block' : 'none';
+      document.getElementById('enrollment-section').style.display = (section === 'enrollment') ? 'block' : 'none';
+      
+      const links = document.querySelectorAll('nav ul li a');
+      links.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + section);
+      });
+    }
+    
+    // Read URL hash on load to show the proper section
+    window.addEventListener('load', () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        showSection(hash);
+      }
+    });
+    
+    function filterCourses(category, event) {
+      const buttons = document.querySelectorAll('.tab-button');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      if (event) event.target.classList.add('active');
+      const cards = document.querySelectorAll('#courses-list .course-card');
+      cards.forEach(card => {
+        card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
+      });
+    }
+    
+    function searchCourses(sectionId) {
+      let listId = sectionId === 'courses-section' ? 'courses-list-2' : 'courses-list';
+      let input = document.getElementById(sectionId === 'courses-section' ? 'courseSearch2' : 'courseSearch').value.toLowerCase();
+      let courses = document.querySelectorAll('#' + listId + ' .course-card');
+      courses.forEach(course => {
+        let courseName = course.querySelector('h3').innerText.toLowerCase();
+        course.style.display = courseName.includes(input) ? "block" : "none";
+      });
+    }
+    
+    function submitEnrollment(event) {
+      event.preventDefault();
+      const form = event.target;
+      const fullname = form.fullname.value.trim();
+      const email = form.email.value.trim();
+      const course = form.course.value;
+      let message = '';
+      if (!fullname) message += 'Full name is required.<br>';
+      if (!email) message += 'Email is required.<br>';
+      if (!course) message += 'Please select a course.<br>';
+      const messageContainer = document.getElementById('formMessage');
+      if (message) {
+        messageContainer.innerHTML = '<div style="color:red;">' + message + '</div>';
+      } else {
+        messageContainer.innerHTML = '<div style="color:green;">Enrollment submitted successfully!</div>';
+        form.reset();
+      }
+    }
+  </script>
+  
+</body>
+</html>
