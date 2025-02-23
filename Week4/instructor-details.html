@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Instructor Details</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Instructor Details</h1>
+  </header>
+  <main class="instructor-details-content">
+    <div id="instructor-details"></div>
+    <a class="back-link" href="index5.html#instructors">← Back to Instructors</a>
+  </main>
+  <footer>
+    <p>&copy; 2025 Online Education Platform</p>
+  </footer>
+  <script>
+    function getQueryParam(param) {
+      let params = new URLSearchParams(window.location.search);
+      return params.get(param);
+    }
+    
+    function loadInstructorDetails() {
+      const instructor = getQueryParam('instructor');
+      const detailsContainer = document.getElementById('instructor-details');
+      let content = '';
+      if(instructor === 'jane') {
+        content = `<h2>Jane Doe</h2>
+                   <p><strong>Biography:</strong> Jane is an expert in web development with over 10 years of experience. She has taught courses on HTML, CSS, and JavaScript.</p>
+                   <p><strong>Courses:</strong> HTML & CSS, JavaScript Essentials</p>
+                   <p><strong>User Rating:</strong> ★★★★☆</p>`;
+      } else if(instructor === 'sam') {
+        content = `<h2>Sam James</h2>
+                   <p><strong>Biography:</strong> Sam is a seasoned marketer with a passion for digital marketing strategies. He helps students understand the dynamics of online branding.</p>
+                   <p><strong>Courses:</strong> Digital Marketing 101</p>
+                   <p><strong>User Rating:</strong> ★★★★★</p>`;
+      } else {
+        content = `<h2>Instructor Not Found</h2><p>Please select a valid instructor.</p>`;
+      }
+      detailsContainer.innerHTML = content;
+    }
+    
+    loadInstructorDetails();
+  </script>
+  
+</body>
+</html>
