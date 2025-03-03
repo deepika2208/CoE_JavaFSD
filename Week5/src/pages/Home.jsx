@@ -44,28 +44,3 @@ const HomePage = () => {
 
 export default HomePage;
 
-
-
-// import ProductCard from "../components/ProductCard.jsx";
-
-// const products = [
-//   { id: 1, name: "LG", price: 40000 },
-//   { id: 2, name: "Daikin", price: 50000 },
-//   { id: 3, name: "Samsung", price: 35000 },
-//   { id: 3, name: "Panasonic", price: 29000 },
-// ];
-
-// const HomePage = () => {
-//   return (
-//     <div className="home-page p-4">
-//       <h1 className="home-title text-2xl font-bold mb-4">Products</h1>
-//       <div className="home-product-grid grid grid-cols-1 md:grid-cols-3 gap-4">
-//         {products.map((product) => (
-//           <ProductCard key={product.id} product={product} />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default HomePage;
