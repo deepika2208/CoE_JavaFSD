@@ -1,0 +1,14 @@
+.card-img-top {
+    height: 300px;
+    object-fit: contain;
+  }
+  
+  .card {
+    margin-top: 20px;
+    padding: 15px;
+  }
+  
+  .card-body {
+    text-align: center;
+  }
+  

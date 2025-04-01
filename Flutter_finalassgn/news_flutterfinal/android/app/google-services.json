@@ -1,0 +1,105 @@
+{
+  "project_info": {
+    "project_number": "335066717543",
+    "project_id": "fir-49e37",
+    "storage_bucket": "fir-49e37.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:335066717543:android:8a1e07bd62f439557763c2",
+        "android_client_info": {
+          "package_name": "com.example.firebaseapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfpn4mx8yWsh0JB0GCYoCBpst_Dwov_CA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:335066717543:android:79d756759e9cdc797763c2",
+        "android_client_info": {
+          "package_name": "com.example.mindease_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfpn4mx8yWsh0JB0GCYoCBpst_Dwov_CA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:335066717543:android:bfb1dcd6f46db1357763c2",
+        "android_client_info": {
+          "package_name": "com.example.news_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfpn4mx8yWsh0JB0GCYoCBpst_Dwov_CA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:335066717543:android:e1e5e28f89ac1cf07763c2",
+        "android_client_info": {
+          "package_name": "com.example.news_flutterfinal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfpn4mx8yWsh0JB0GCYoCBpst_Dwov_CA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:335066717543:android:f8cee12fa4d7b1e27763c2",
+        "android_client_info": {
+          "package_name": "com.example.typing_game"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfpn4mx8yWsh0JB0GCYoCBpst_Dwov_CA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

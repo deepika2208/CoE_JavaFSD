@@ -1,0 +1,115 @@
+body {
+  background: #f4f4f4;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.shopkart-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.shopkart-header h1 {
+  font-size: 42px;
+  font-weight: bold;
+  color: #333;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); 
+  letter-spacing: 2px;
+}
+
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  max-width: 90%;
+  width: 100%;
+}
+
+/* Left section (quote and image) */
+.left-section {
+  flex: 1;
+  text-align: center;
+}
+
+.quote {
+  font-size: 18px;
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.image-container {
+  text-align: center;
+  margin-top: 40px; /* Moves the image 4 cm (40px) down */
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  max-height: 500px; /* Prevent oversized images */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Login Form */
+.container {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  font-weight: bold;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+button {
+  background: #4682B4;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #5F9EA0;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .main-container {
+      flex-direction: column;
+  }
+
+  .image-container img {
+      max-width: 80%;
+  }
+}
